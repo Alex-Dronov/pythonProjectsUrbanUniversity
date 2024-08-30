@@ -14,4 +14,4 @@ for i in range( 1, 20):
         if inp_ % (i + j) == 0:
             result += str(i) + str(j)
 
-print(result)
+print('Пароль:', result)
