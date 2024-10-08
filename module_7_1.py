@@ -16,11 +16,17 @@ class Shop:
     __file_name = 'products.txt'
 
     def get_products(self):
-        if os.path.isfile(self.__file_name):
+        if os.path.isfile(self.__file_name): # Проверяем существует ли файл products.txt
+
+            # Файл products.txt существует, считываем из products.txt всю информацию
+
             products_file = open(self.__file_name, 'r')
             products_str = products_file.read()
             products_file.close()
         else:
+
+            # Файл products.txt не существует, создаем файл products.txt, и возвращаем пустую строку
+
             products_file = open(self.__file_name, 'a')
             products_file.close()
             products_str = ''
