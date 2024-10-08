@@ -23,9 +23,10 @@ class Shop:
             products_file = open(self.__file_name, 'r')
             products_str = products_file.read()
             products_file.close()
+
         else:
 
-            # Файл products.txt не существует, создаем файл products.txt, и возвращаем пустую строку
+            # Файл products.txt не существует, создаем файл products.txt и возвращаем пустую строку
 
             products_file = open(self.__file_name, 'a')
             products_file.close()
