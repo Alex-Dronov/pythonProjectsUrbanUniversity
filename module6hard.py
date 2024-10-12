@@ -121,5 +121,3 @@ print(len(circle1))
 
 # Проверка объёма (куба):
 print(cube1.get_volume())
-
-# print(f"[{circle1.get_sides()[0]}]")
