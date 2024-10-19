@@ -29,9 +29,9 @@ class Car:
             if len(numbers) == 6:
                 return True
             else:
-                raise IncorrectVinNumber('Неверная длина номера')
+                raise IncorrectCarNumbers('Неверная длина номера')
         else:
-            raise IncorrectVinNumber('Некорректный тип данных для номеров')
+            raise IncorrectCarNumbers('Некорректный тип данных для номеров')
 
 
 try:
