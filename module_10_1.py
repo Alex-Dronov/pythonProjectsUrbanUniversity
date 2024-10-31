@@ -28,13 +28,15 @@ thread1.start()
 thread2.start()
 thread3.start()
 thread4.start()
-# Join вызывается для каждого из потоков отдельно для того,
+
+# Join вызывается для каждого из дополнительных потоков для того,
 # чтобы в момент фиксации времени завершения потоков,
-# все четыре вспомогательных потока гарантированно завершились.
+# все четыре дополнительных потока уже завершились.
 thread1.join()
 thread2.join()
 thread3.join()
 thread4.join()
+
 thr_finish = time.time()
 print(f"Окончание работы потоков: {time.strftime('%H:%M:%S',time.localtime(thr_finish))}")
 elapsed = round(thr_finish - thr_start, 6)
