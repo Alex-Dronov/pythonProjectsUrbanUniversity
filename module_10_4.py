@@ -38,7 +38,7 @@ class Cafe:
         while not self.queue.empty() or there_are_occupied_tables:
             there_are_occupied_tables = False
             for tbl in self.tables:
-                if not tbl.guest is None:
+                if tbl.guest is not None:
                     if not tbl.guest.is_alive():
                         print(F"{tbl.guest.name} покушал(-а) и ушёл(ушла) \nСтол номер {tbl.number} свободен")
                         tbl.guest = None
@@ -49,7 +49,7 @@ class Cafe:
                     print(f"{tbl.guest.name} вышел(-ла) из очереди и сел(-а) за стол номер {tbl.number}")
                     there_are_occupied_tables = True
                     tbl.guest.run()
-        print("Гостей больше нет. Кафе закрыто.")
+        print("\nГостей больше нет. Кафе закрыто.")
 
 # Создание столов
 tables = [Table(number) for number in range(1, 6)]
