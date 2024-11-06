@@ -9,7 +9,6 @@ class Guest(threading.Thread):
     def __init__(self, name):
         super().__init__(name=name)
         self.name = str(name)
-        self.is_alive()
 
     def run(self):
         time.sleep(random.randint(3, 10))
@@ -21,16 +20,13 @@ class Cafe:
 
     def guest_arrival(self, *guests_):
         for gst in guests_:
-            empty_tbl = None
             for tbl in self.tables:
                 if tbl.guest is None:
-                    empty_tbl = tbl
+                    tbl.guest = gst
+                    gst.start()
+                    print(f"{gst.name} сел(-а) за стол номер {tbl.number}")
                     break
-            if empty_tbl:
-                empty_tbl.guest = gst
-                gst.start()
-                print(f"{gst.name} сел(-а) за стол номер {empty_tbl.number}")
-            else:
+            if not gst.is_alive():
                 self.queue.put(gst)
 
     def discuss_guests(self):
@@ -39,16 +35,17 @@ class Cafe:
             there_are_occupied_tables = False
             for tbl in self.tables:
                 if tbl.guest is not None:
-                    if not tbl.guest.is_alive():
+                    if tbl.guest.is_alive():
+                        there_are_occupied_tables = True
+                    else:
                         print(F"{tbl.guest.name} покушал(-а) и ушёл(ушла) \nСтол номер {tbl.number} свободен")
                         tbl.guest = None
-                    else:
-                        there_are_occupied_tables = True
                 if tbl.guest is None and not self.queue.empty():
                     tbl.guest = self.queue.get()
                     print(f"{tbl.guest.name} вышел(-ла) из очереди и сел(-а) за стол номер {tbl.number}")
                     there_are_occupied_tables = True
-                    tbl.guest.run()
+                    tbl.guest.start()
+
         print("\nГостей больше нет. Кафе закрыто.")
 
 # Создание столов
