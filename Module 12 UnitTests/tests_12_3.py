@@ -1,13 +1,12 @@
 import unittest
 import runner
 import runner_and_tournament as rat
-from pprint import pprint
 
 
 class RunnerTest(unittest.TestCase):
     is_frozen = False
 
-    @unittest.skipIf(is_frozen, 'is_frozen = True')
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_walk(self):
         """
             Тест функции walk
@@ -18,7 +17,7 @@ class RunnerTest(unittest.TestCase):
             self.test_Runner.walk()
         self.assertEqual(self.test_Runner.distance, 50, "Тест функции walk не пройден")
 
-    @unittest.skipIf(is_frozen, 'is_frozen = True')
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_run(self):
         """
             Тест функции run
@@ -29,7 +28,7 @@ class RunnerTest(unittest.TestCase):
             self.test_Runner.run()
         self.assertEqual(self.test_Runner.distance, 100, "Тест функции run не пройден")
 
-    @unittest.skipIf(is_frozen, 'is_frozen = True')
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_challenge(self):
         self.test_Runner_1 = runner.Runner("test_Runner_1")
         self.test_Runner_2 = runner.Runner("test_Runner_2")
@@ -45,7 +44,7 @@ class TournamentTest(unittest.TestCase):
     def setUpClass(cls):
         cls.all_results = []
 
-    @unittest.skipIf(is_frozen, 'is_frozen = True')
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def setUp(self):
         self._Usain = rat.Runner('Усэйн', 10)
         self._Andrey = rat.Runner('Андрей', 9)
@@ -56,7 +55,7 @@ class TournamentTest(unittest.TestCase):
         #pprint(cls.all_results)
         pass
 
-    @unittest.skipIf(is_frozen, 'is_frozen = True')
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_Usain_Nick(self):
         _race = rat.Tournament(90, self._Usain, self._Nick)
         _results = _race.start()
@@ -68,7 +67,7 @@ class TournamentTest(unittest.TestCase):
         self.assertTrue(_results[len(_results)] == 'Ник', 'test_Usain_Nick was failed')
         TournamentTest.all_results.append(_results)
 
-    @unittest.skipIf(is_frozen, 'is_frozen = True')
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_Andrey_Nick(self):
         _race = rat.Tournament(90, self._Andrey, self._Nick)
         _results = _race.start()
@@ -80,7 +79,7 @@ class TournamentTest(unittest.TestCase):
         self.assertTrue(_results[len(_results)] == 'Ник', 'test_Andrey_Nick was failed')
         TournamentTest.all_results.append(_results)
 
-    @unittest.skipIf(is_frozen, 'is_frozen = True')
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_Usain_Andrey_Nick(self):
         _race = rat.Tournament(90, self._Usain, self._Andrey, self._Nick)
         _results = _race.start()
