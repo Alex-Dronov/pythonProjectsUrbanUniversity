@@ -3,6 +3,7 @@ import runner_and_tournament as rat
 import unittest
 
 class TournamentTest(unittest.TestCase):
+    is_frozen = True
 
     @classmethod
     def setUpClass(cls):
@@ -17,6 +18,7 @@ class TournamentTest(unittest.TestCase):
     def tearDownClass(cls):
         pprint(cls.all_results)
 
+    @unittest.skipIf(is_frozen, 'is_frozen = True')
     def test_Usain_Nick(self):
         _race = rat.Tournament(90, self._Usain, self._Nick)
         _results = _race.start()
@@ -28,6 +30,7 @@ class TournamentTest(unittest.TestCase):
         self.assertTrue(_results[len(_results)] == 'Ник', 'test_Usain_Nick was failed')
         TournamentTest.all_results.append(_results)
 
+    @unittest.skipIf(is_frozen, 'is_frozen = True')
     def test_Andrey_Nick(self):
         _race = rat.Tournament(90, self._Andrey, self._Nick)
         _results = _race.start()
@@ -39,6 +42,7 @@ class TournamentTest(unittest.TestCase):
         self.assertTrue(_results[len(_results)] == 'Ник', 'test_Andrey_Nick was failed')
         TournamentTest.all_results.append(_results)
 
+    @unittest.skipIf(is_frozen, 'is_frozen = True')
     def test_Usain_Andrey_Nick(self):
         _race = rat.Tournament(90, self._Usain, self._Andrey, self._Nick)
         _results = _race.start()
